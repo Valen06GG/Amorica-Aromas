@@ -14,7 +14,7 @@ export class ProductsService {
       const query = this.productRepo.createQueryBuilder('product');
     
       if (search) {
-        query.andWhere('LOWER(product.name) LIKE LOWER(:search)', {
+        query.andWhere('product.name ILIKE :search', {
           search: `%${search}%`,
         });
       }
@@ -23,13 +23,24 @@ export class ProductsService {
         query.andWhere('product.category = :category', { category });
       }
     
-      return query.getMany();
+      try {
+        return await query.getMany();
+      } catch (error) {
+        throw new HttpException(
+          'Error al obtener productos',
+          HttpStatus.INTERNAL_SERVER_ERROR,
+        );
+      }
     }
 
     async findOne(id: string) {
       const productId = await this.productRepo.findOne({
         where: { id },
       });
+
+      if (!productId) {
+        throw new HttpException('Producto no encontrado', HttpStatus.NOT_FOUND);
+      }
 
       return productId;
     }
