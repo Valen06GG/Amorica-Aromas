@@ -12,7 +12,7 @@ export default function Home() {
 
   useEffect(() => {
     fetchProducts();
-  }, []); 
+  }, [search, category]); 
 
   const fetchProducts = async () => {
     console.log("search:", search);
@@ -49,7 +49,7 @@ export default function Home() {
         <option value="">Todas las categorías</option>
         <option value="Budas">Budas</option>
         <option value="Lamparas de sal">Lamparas de sal</option>
-        <option value=""></option>
+        <option value="Velas">Velas</option>
       </select>
 
       <div className="grid grid-cols-3 gap-6">

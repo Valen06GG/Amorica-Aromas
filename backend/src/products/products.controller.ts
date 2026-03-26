@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post, Query, UseGuards } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, Post, Put, Query, UseGuards } from "@nestjs/common";
 import { ProductsService } from "./product.service";
 import { CreateProductDto } from "./dto/create-products.dto";
 import { UpdateProductDto } from "./dto/update-products.dto";
@@ -36,7 +36,7 @@ export class ProductsController {
     }
 
     @UseGuards(AdminGuard)
-    @Patch(':id')
+    @Put(':id')
     update(
         @Param('id') id: string,
         @Body() body: UpdateProductDto,

@@ -17,8 +17,6 @@ export async function getProducts(search?: string, category?: string) {
     url += `?${params.toString()}`;
   }
 
-  console.log("URL FINAL:", url);
-
   const response = await fetch(url);
 
   if (!response.ok) {
@@ -33,6 +31,55 @@ export async function getProductById(id: string) {
 
   if (!response.ok) {
     throw new Error("Producto no encontrado");
+  }
+
+  return response.json();
+}
+
+export async function createProduct(data: any) {
+  const response = await fetch(`${API}/products`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-admin-key': 'Sabri-Amorica-Aromas',
+    },
+    body: JSON.stringify(data),
+  });
+
+  if (!response.ok) {
+    throw new Error('Error al crear el producto');
+  }
+
+  return response.json();
+}
+
+export async function deleteProduct(id: string) {
+  const response = await fetch(`${API}/products/${id}`, {
+    method: 'DELETE',
+    headers: {
+      "x-admin-key": 'Sabri-Amorica-Aromas',
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error('Error al elminar producto');
+  }
+
+  return response.json();
+}
+
+export async function updateProduct(id: string, data: any) {
+  const response = await fetch(`${API}/products/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type' : 'application/json',
+      "x-admin-key": 'Sabri-Amorica-Aromas',
+    },
+    body: JSON.stringify(data),
+  });
+
+  if (!response.ok) {
+    throw new Error('Error al actualizar producto');
   }
 
   return response.json();

@@ -20,7 +20,7 @@ export class ProductsService {
       }
     
       if (category) {
-        query.andWhere('product.category = :category', { category });
+        query.andWhere('LOWER(product.category) = LOWER(:category)', { category });
       }
     
       try {
