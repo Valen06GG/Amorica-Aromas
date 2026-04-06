@@ -1,19 +1,23 @@
-import { CanActivate, ExecutionContext, Injectable, UnauthorizedException } from '@nestjs/common';
-import { Observable } from 'rxjs';
+import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
+import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
-export class AdminGuard implements CanActivate {
-  canActivate(
-    context: ExecutionContext,
-  ): boolean {
+export class JwtAuthGuard implements CanActivate {
+  constructor(private jwtService: JwtService) {}
+
+  canActivate(context: ExecutionContext): boolean {
     const request = context.switchToHttp().getRequest();
+    const authHeader = request.headers['authorization'];
 
-    const adminKey = request.headers['x-admin-key'];
+    if (!authHeader) return false;
 
-    if (!adminKey || adminKey !== process.env.ADMIN_KEY) {
-      throw new UnauthorizedException('No autorizado');
+    const token = authHeader.split(' ')[1];
+
+    try {
+      this.jwtService.verify(token);
+      return true;
+    } catch {
+      return false;
     }
-
-    return true;
   }
 }

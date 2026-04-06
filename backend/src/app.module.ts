@@ -7,7 +7,8 @@ import { typeOrmConfig } from './config/typeorm';
 @Module({
   imports: [
     ConfigModule.forRoot({
-      isGlobal: true
+      isGlobal: true,
+      envFilePath: '.env',
     }),
     TypeOrmModule.forRoot(typeOrmConfig),
     ProductsModule

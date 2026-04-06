@@ -37,11 +37,12 @@ export async function getProductById(id: string) {
 }
 
 export async function createProduct(data: any) {
+  const token = localStorage.getItem("token");
   const response = await fetch(`${API}/products`, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json',
-      'x-admin-key': 'Sabri-Amorica-Aromas',
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(data),
   });
@@ -54,10 +55,12 @@ export async function createProduct(data: any) {
 }
 
 export async function deleteProduct(id: string) {
+  const token = localStorage.getItem("token");
   const response = await fetch(`${API}/products/${id}`, {
     method: 'DELETE',
     headers: {
-      "x-admin-key": 'Sabri-Amorica-Aromas',
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
   });
 
@@ -69,11 +72,12 @@ export async function deleteProduct(id: string) {
 }
 
 export async function updateProduct(id: string, data: any) {
+  const token = localStorage.getItem("token");
   const response = await fetch(`${API}/products/${id}`, {
     method: 'PUT',
     headers: {
-      'Content-Type' : 'application/json',
-      "x-admin-key": 'Sabri-Amorica-Aromas',
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(data),
   });
@@ -83,4 +87,20 @@ export async function updateProduct(id: string, data: any) {
   }
 
   return response.json();
+}
+
+export async function loginRequest(username: string, password: string) {
+  const res = await fetch(`${API}/auth/login`, {
+    method: 'POST',
+    headers: {
+      'Content-Type' : 'application/json',
+    },
+    body: JSON.stringify({ username, password }),
+  });
+
+  if (!res.ok) {
+    throw new Error('Error al iniciar sesión');
+  };
+
+  return res.json();
 }

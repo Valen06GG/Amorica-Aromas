@@ -21,6 +21,12 @@ export default function AdminPage() {
     
     useEffect(() => {
         fetchProducts();
+
+        const token = localStorage.getItem("token");
+
+        if (!token) {
+          window.location.href = "/login";
+        }
     }, []);
 
     const handleDelete = async (id: string) => {

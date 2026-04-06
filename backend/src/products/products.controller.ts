@@ -2,7 +2,7 @@ import { Body, Controller, Delete, Get, Param, Post, Put, Query, UseGuards } fro
 import { ProductsService } from "./product.service";
 import { CreateProductDto } from "./dto/create-products.dto";
 import { UpdateProductDto } from "./dto/update-products.dto";
-import { AdminGuard } from "src/auth/admin/admin.guard";
+import { JwtAuthGuard } from "src/auth/admin/admin.guard";
 
 @Controller('products')
 export class ProductsController {
@@ -21,22 +21,22 @@ export class ProductsController {
       return this.productsService.findOne(id);
     }
     
-    @UseGuards(AdminGuard)
     @Post()
+    @UseGuards(JwtAuthGuard)
      create(
       @Body() body: CreateProductDto
     ) {
       return this.productsService.create(body);
     }
 
-    @UseGuards(AdminGuard)
     @Delete(':id')
+    @UseGuards(JwtAuthGuard)
     delete(@Param('id') id: string) {
         return this.productsService.delete(id);
     }
 
-    @UseGuards(AdminGuard)
     @Put(':id')
+    @UseGuards(JwtAuthGuard)
     update(
         @Param('id') id: string,
         @Body() body: UpdateProductDto,
