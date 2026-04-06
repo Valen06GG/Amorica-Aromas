@@ -16,8 +16,8 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className="bg-white border-b shadow-sm px-10 py-4 flex justify-between items-center">
-      <h1 className="text-xl font-bold text-indigo-600">
+    <nav className="bg-[#e8dfd3] px-4 md:px-10 py-4 flex justify-between items-center shadow-sm">
+      <h1 className="text-xl md:text-2xl font-bold text-[#5a4634]">
         <Link
         href="/"
         >
@@ -25,15 +25,15 @@ export default function Navbar() {
         </Link>
       </h1>
 
-      <div className="flex gap-6">
+      <div className="flex gap-4 text-sm md:text-base text-[#5a4634]">
         <Link 
         href="/" 
-        className="text-black hover:text-indigo-600">
+        className="text-black hover:text-[#8f5c30]">
           Inicio
         </Link>
 
         {isAdmin && (
-          <Link href="/admin" className="text-black hover:text-indigo-600">
+          <Link href="/admin" className="text-black hover:text-[#8f5c30]">
             Admin
           </Link>
         )}

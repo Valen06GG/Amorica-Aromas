@@ -104,3 +104,17 @@ export async function loginRequest(username: string, password: string) {
 
   return res.json();
 }
+
+export async function uploadImage(file: File) {
+  const formData = new FormData();
+  formData.append("file", file);
+
+  const res = await fetch("http://localhost:3001/products/upload", {
+    method: "POST",
+    body: formData,
+  });
+
+  if (!res.ok) throw new Error("Error al subir imagen");
+
+  return res.json();
+}
