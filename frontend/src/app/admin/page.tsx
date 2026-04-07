@@ -112,28 +112,28 @@ export default function AdminPage() {
 };
 
     return (
-        <main className="min-h-screen bg-gray-100 text-gray-900 px-4 py-6 md:px-10">
-          <div className="bg-white p-4 md:p-6 rounded-xl shadow-md w-full max-w-2xl mx-auto border">
-            <h2 className="text-xl font-semibold mb-4 text-gray-800">
+        <main className="min-h-screen bg-[#f5efe6] text-gray-900 px-4 py-6 md:px-10">
+          <div className="bg-white border-[#d6cfc4] p-4 md:p-6 rounded-xl shadow-md w-full max-w-2xl mx-auto border">
+            <h2 className="text-xl font-semibold mb-4 text-[#5a4634]">
               Crear / Editar producto
             </h2>
           
             <input
-              className="border border-gray-300 p-2 mb-2 w-full rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm md:text-base"
+              className="border border-[#d6cfc4] p-2 mb-2 w-full text-[#5a4634] rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm md:text-base"
               placeholder="Nombre"
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
             />
           
             <input
-              className="border border-gray-300 p-2 mb-2 w-full rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm md:text-base"
+              className="border border-[#d6cfc4] p-2 mb-2 w-full text-[#5a4634] rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm md:text-base"
               placeholder="Descripción"
               value={form.description}
               onChange={(e) => setForm({ ...form, description: e.target.value })}
             />
           
             <input
-              className="border border-gray-300 p-2 mb-2 w-full rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm md:text-base"
+              className="border border-[#d6cfc4] p-2 mb-2 w-full text-[#5a4634] rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm md:text-base"
               placeholder="Precio"
               value={form.price}
               onChange={(e) => setForm({ ...form, price: e.target.value })}
@@ -143,7 +143,7 @@ export default function AdminPage() {
                 type="file"
                 accept="image/*"
                 onChange={handleImageUpload}
-                className="border border-gray-300 p-2 mb-2 w-full rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm md:text-base"
+                className="border border-[#d6cfc4] p-2 mb-2 w-full text-[#5a4634] rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm md:text-base"
             />
             
             {form.image && (
@@ -154,7 +154,7 @@ export default function AdminPage() {
             )}
           
             <input
-              className="border border-gray-300 p-2 mb-2 w-full rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm md:text-base"
+              className="border border-[#d6cfc4] p-2 mb-2 w-full text-[#5a4634] rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm md:text-base"
               placeholder="Categoría"
               value={form.category}
               onChange={(e) => setForm({ ...form, category: e.target.value })}
@@ -163,7 +163,7 @@ export default function AdminPage() {
             <div className="flex flex-col md:flex-row gap-2 mt-4">
               <button
                 onClick={handleCreate}
-                className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded transition cursor-pointer"
+                className="bg-[#b08968] text-white px-4 py-2 rounded transition cursor-pointer"
               >
                 {editingId ? "Actualizar" : "Crear"}
               </button>
@@ -180,7 +180,7 @@ export default function AdminPage() {
                       category: "",
                     });
                   }}
-                  className="border border-gray-400 px-4 py-2 rounded hover:bg-gray-100 transition cursor-pointer"
+                  className="border border-gray-400 px-4 py-2 rounded bg-[#5a4634] text-white transition cursor-pointer"
                 >
                   Cancelar
                 </button>
@@ -201,24 +201,24 @@ export default function AdminPage() {
                 />
           
                 <div className="p-4">
-                  <h3 className="text-lg font-semibold">{product.name}</h3>
+                  <h3 className="text-lg text-[#5a4634] font-semibold">{product.name}</h3>
                   <p className="text-sm text-gray-500">{product.category}</p>
           
-                  <p className="mt-2 text-indigo-600 font-bold">
+                  <p className="mt-2 text-[#7a5c3e] font-bold">
                     ${product.price}
                   </p>
           
                   <div className="flex gap-2 mt-4">
                     <button
                       onClick={() => handleEdit(product)}
-                      className="flex-1 bg-yellow-400 hover:bg-yellow-500 text-black py-1 rounded cursor-pointer"
+                      className="flex-1 bg-[#b08968] text-white py-1 rounded cursor-pointer"
                     >
                       Editar
                     </button>
           
                     <button
                       onClick={() => handleDelete(product.id)}
-                      className="flex-1 py-2 text-sm md:text-base bg-red-500 hover:bg-red-600 text-white py-1 rounded cursor-pointer"
+                      className="flex-1 py-2 text-sm md:text-base bg-[#5a4634] text-white py-1 rounded cursor-pointer"
                     >
                       Eliminar
                     </button>

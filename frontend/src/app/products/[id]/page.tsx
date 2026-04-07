@@ -1,50 +1,53 @@
 import { getProductById } from "@/src/services/api";
 
 interface Props {
-    params: {
-        id: string;
-    };
+  params: {
+    id: string;
+  };
 }
 
 export default async function ProductDetail({ params }: Props) {
-    const { id } = await params;
-
+  const { id } = await params;
   const product = await getProductById(id);
 
   return (
-  <main className="min-h-screen bg-gray-100 px-4 py-6 md:px-10">
-    
-    <div className="max-w-6xl mx-auto bg-white rounded-xl shadow-md p-4 md:p-8">
+    <main className="min-h-screen bg-[#f5efe6] px-4 py-10 md:px-16 flex justify-center items-start">
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="max-w-3xl w-full bg-white rounded-2xl shadow-lg mt-10 overflow-hidden">
+        
+        <div className="grid grid-cols-1 md:grid-cols-[3fr_2fr]">
 
-        <div>
-          <img
-            src={product.image}
-            alt={product.name}
-            className="w-full h-64 md:h-96 object-cover rounded-xl"
-          />
-        </div>
+          <div className="overflow-hidden">
+            <img
+              src={product.image}
+              alt={product.name}
+              className="w-full h-80 md:h-[400px] object-cover hover:scale-105 transition duration-500"
+            />
+          </div>
 
-        <div className="flex flex-col">
+          <div className="flex flex-col justify-center p-8 md:p-12">
 
-          <h3 className="text-sm md:text-base font-semibold text-[#5a4634]">
-            {product.name}
-          </h3>
-          
-          <p className="text-xs md:text-sm text-gray-500">
-            {product.category}
-          </p>
-          
-          <p className="mt-2 text-[#7a5c3e] font-bold text-sm md:text-lg">
-            ${product.price}
-          </p>
+            <span className="text-xs uppercase tracking-widest text-[#b08968] font-semibold mb-2">
+              {product.category}
+            </span>
+
+            <h1 className="text-2xl md:text-3xl font-bold text-[#5a4634] mb-3">
+              {product.name}
+            </h1>
+
+            <p className="text-gray-500 text-sm md:text-base leading-relaxed mb-6">
+              {product.description}
+            </p>
+
+            <p className="text-3xl font-bold text-[#7a5c3e]">
+              ${product.price}
+            </p>
+          </div>
+
         </div>
 
       </div>
 
-    </div>
-
-  </main>
-);
+    </main>
+  );
 }

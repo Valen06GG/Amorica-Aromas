@@ -33,7 +33,7 @@ export default function Home() {
       <input
         type="text"
         placeholder="Buscar producto..."
-        className="border border-[#d6cfc4] bg-white p-2 md:p-3 w-full rounded text-sm md:text-base focus:ring-2 focus:ring-[#cbbba0]"
+        className="border border-[#d6cfc4] bg-white text-[#5a4634] p-2 md:p-3 w-full rounded text-sm md:text-base focus:ring-2 focus:ring-[#cbbba0]"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
@@ -47,7 +47,7 @@ export default function Home() {
     </div>
 
     <select
-      className="border border-[#d6cfc4] bg-white p-2 md:p-3 mb-6 w-full md:w-60 rounded text-sm md:text-base"
+      className="border border-[#d6cfc4] text-[#5a4634] bg-white p-2 md:p-3 mb-6 w-full md:w-60 rounded text-sm md:text-base"
       value={category}
       onChange={(e) => setCategory(e.target.value)}
     >
