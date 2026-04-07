@@ -12,8 +12,6 @@ export class AuthService {
     async login (username: string, password: string) {
         const USER = this.configService.get<string>("ADMIN_USERNAME");
         const PASS = this.configService.get<string>("ADMIN_PASSWORD");
-        console.log("ENV:", USER, PASS);
-        console.log("BODY:", username, password);
 
         if (username !== USER || password !== PASS) {
             throw new UnauthorizedException("Credenciales inválidas");
