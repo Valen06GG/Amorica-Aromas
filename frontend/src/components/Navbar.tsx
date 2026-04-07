@@ -28,12 +28,12 @@ export default function Navbar() {
       <div className="flex gap-4 text-sm md:text-base text-[#5a4634]">
         <Link 
         href="/" 
-        className="text-black hover:text-[#8f5c30]">
+        className="hover:text-[#8f5c30]">
           Inicio
         </Link>
 
         {isAdmin && (
-          <Link href="/admin" className="text-black hover:text-[#8f5c30]">
+          <Link href="/admin" className="hover:text-[#8f5c30]">
             Admin
           </Link>
         )}
