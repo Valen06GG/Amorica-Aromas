@@ -2,6 +2,7 @@
 
 import { createProduct, deleteProduct, getProducts, updateProduct, uploadImage } from "@/src/services/api";
 import { useEffect, useState } from "react"
+import toast from "react-hot-toast";
 
 export default function AdminPage() {
     const [editingId, setEditingId] = useState<string | null>(null);
@@ -39,23 +40,23 @@ export default function AdminPage() {
     
         setForm({
           ...form,
-          image: res.url, // 🔥 URL REAL
+          image: res.url,
         });
     
       } catch {
-        alert("Error al subir imagen");
+        toast.error("Error al subir imagen");
       }
     };
 
     const handleDelete = async (id: string) => {
         try {
             await deleteProduct(id);
-            alert('Producto eliminado ✅');
+            toast.success('Producto eliminado ✅');
             setProducts((prev: any) => 
             prev.filter((product: any) => product.id !== id)
         )
         } catch (error) {
-            alert('Error al eliminar ❌');
+            toast.error('Error al eliminar ❌');
         }
     };
 
@@ -86,7 +87,7 @@ export default function AdminPage() {
           );
     
           setEditingId(null);
-          alert("Producto actualizado ✅");
+          toast.success("Producto actualizado ✅");
     
         } else {
           const res = await createProduct({
@@ -95,7 +96,12 @@ export default function AdminPage() {
           });
     
           setProducts((prev: any) => [...prev, res.data]);
-          alert("Producto creado ✅");
+          toast.success("Producto creado ✅", {
+            style: {
+              background: "#e8dfd3",
+              color: "#5a4634",
+            },
+          });
         }
     
         setForm({
@@ -107,7 +113,7 @@ export default function AdminPage() {
         });
     
       } catch (error) {
-        alert("Error ❌");
+        toast.error("Error ❌");
       }
 };
 
@@ -188,23 +194,23 @@ export default function AdminPage() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-6 mt-10">
             {products.map((product: any) => (
               <div
                 key={product.id}
-                className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition"
+                className="bg-white rounded-2xl shadow-md overflow-hidden"
               >
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="w-full h-48 object-cover"
+                  className="w-full h-40 sm:h-48 md:h-56 lg:h-64 object-cover"
                 />
           
-                <div className="p-4">
+                <div className="p-3">
                   <h3 className="text-lg text-[#5a4634] font-semibold">{product.name}</h3>
                   <p className="text-sm text-gray-500">{product.category}</p>
           
-                  <p className="mt-2 text-[#7a5c3e] font-bold">
+                  <p className="mt-1 text-[#7a5c3e] font-bold text-base">
                     ${product.price}
                   </p>
           

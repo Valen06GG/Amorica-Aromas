@@ -21,7 +21,7 @@ export default async function ProductDetail({ params }: Props) {
             <img
               src={product.image}
               alt={product.name}
-              className="w-full h-80 md:h-[400px] object-cover hover:scale-105 transition duration-500"
+              className="w-100 h-110 md:h-[400px] object-cover hover:scale-105 transition duration-500"
             />
           </div>
 

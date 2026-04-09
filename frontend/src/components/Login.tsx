@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { loginRequest } from "../services/api";
+import toast from "react-hot-toast";
 
 export default function Login() {
     const [username, setUsername] = useState("");
@@ -15,9 +16,13 @@ export default function Login() {
 
             localStorage.setItem("token", res.access_token);
 
+            window.dispatchEvent(new Event("storage"));
+
+            toast.success('Login exitoso');
+
             router.push("/admin");
         } catch (error) {
-            alert('Credenciales incorrectas');
+            toast.error('Credenciales incorrectas');
             
         }
     };

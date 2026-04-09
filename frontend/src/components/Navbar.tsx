@@ -7,8 +7,18 @@ export default function Navbar() {
   const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) setIsAdmin(true);
+    const checkAuth = () => {
+      const token = localStorage.getItem("token");
+      if (token) setIsAdmin(true);
+    };
+
+    checkAuth();
+
+    window.addEventListener("storage", checkAuth);
+
+    return () => {
+      window.removeEventListener("storage", checkAuth);
+    }
   }, []);
 
   return (
