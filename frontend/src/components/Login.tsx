@@ -28,7 +28,7 @@ export default function Login() {
     };
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-gray-100">
+        <div className="flex items-center justify-center min-h-screen bg-[#f5efe6]">
           <div className="bg-white p-6 rounded shadow w-80">
             <h2 className="text-xl text-[#5a4634] mb-4">Login Admin</h2>
     
@@ -47,7 +47,7 @@ export default function Login() {
     
             <button
               onClick={handleLogin}
-              className="bg-[#5a4634] text-white w-full py-2"
+              className="bg-[#5a4634] text-white w-full py-2 cursor-pointer"
             >
               Ingresar
             </button>

@@ -1,10 +1,14 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { toast } from "react-hot-toast/headless";
 
 export default function Navbar() {
   const [isAdmin, setIsAdmin] = useState(false);
+      const router = useRouter();
+  
 
   useEffect(() => {
     const checkAuth = () => {
@@ -20,6 +24,18 @@ export default function Navbar() {
       window.removeEventListener("storage", checkAuth);
     }
   }, []);
+
+  const handleLogout = () => {
+    try {
+      localStorage.removeItem("token");
+
+      toast.success("Cerraste sesión correctamente");
+
+      window.location.href = "/login";
+    } catch (error) {
+      toast.error("Error al cerrar sesión");
+    }
+  }
 
   return (
     <nav className="bg-[#e8dfd3] px-4 md:px-12 py-1 flex items-center justify-between shadow-md">
@@ -50,6 +66,15 @@ export default function Navbar() {
             Admin
             <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-[#8f5c30] transition-all group-hover:w-full"></span>
           </Link>
+        )}
+        
+        {isAdmin && (
+          <button
+            onClick={handleLogout}
+            className="bg-[#5a4634] text-white px-3 py-1 rounded hover:bg-[#3e3226] transition text-sm cursor-pointer"
+          >
+            Logout
+          </button>
         )}
 
       </div>
