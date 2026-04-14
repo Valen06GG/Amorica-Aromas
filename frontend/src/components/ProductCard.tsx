@@ -20,7 +20,7 @@ export function ProductCard({ product }: any) {
           </p>
       
           <p className="mt-1 text-[#7a5c3e] font-bold text-base">
-            ${product.price}
+            ${Number(product.price).toLocaleString("es-AR")}
           </p>
         </div>
       
