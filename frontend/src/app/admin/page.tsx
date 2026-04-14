@@ -63,7 +63,7 @@ export default function AdminPage() {
     const handleEdit = (product: any) => {
         setForm({
             ...product,
-            price: String(product.price),
+            price: Number(form.price.replace(/\./g, "")),
         });
 
         setEditingId(product.id)
