@@ -92,7 +92,7 @@ export default function AdminPage() {
         } else {
           const res = await createProduct({
             ...form,
-            price: Number(form.price),
+            price: Number(form.price.replace(/\./g, "")),
           });
     
           setProducts((prev: any) => [...prev, res.data]);
@@ -163,7 +163,15 @@ export default function AdminPage() {
               className="border border-[#d6cfc4] p-2 mb-2 w-full text-[#5a4634] rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm md:text-base"
               placeholder="Categoría"
               value={form.category}
-              onChange={(e) => setForm({ ...form, category: e.target.value })}
+              onChange={(e) => {
+                const value = e.target.value.replace(/\./g, "");
+                if (!isNaN(Number(value))) {
+                  setForm({
+                    ...form,
+                    price: Number(value).toLocaleString("es-AR"),
+                  });
+                }
+              }}
             />
           
             <div className="flex flex-col md:flex-row gap-2 mt-4">
@@ -211,7 +219,7 @@ export default function AdminPage() {
                   <p className="text-sm text-gray-500">{product.category}</p>
           
                   <p className="mt-1 text-[#7a5c3e] font-bold text-base">
-                    ${product.price}
+                    ${Number(product.price).toLocaleString("es-AR")}
                   </p>
           
                   <div className="flex gap-2 mt-4">
