@@ -99,7 +99,15 @@ export default function AdminPage() {
             price: Number(form.price.replace(/\./g, "")),
           });
     
-          setProducts((prev: any) => [...prev, res.data]);
+          const cleanPrice = Number(form.price.replace(/\./g, ""));
+
+          setProducts((prev: any) => [
+            ...prev,
+            {
+              ...res.data,
+              price: cleanPrice,
+            },
+          ]);
           toast.success("Producto creado ✅", {
             style: {
               background: "#e8dfd3",
@@ -223,7 +231,7 @@ export default function AdminPage() {
                   <p className="text-sm text-gray-500">{product.category}</p>
           
                   <p className="mt-1 text-[#7a5c3e] font-bold text-base">
-                    ${product.price}
+                    ${Number(product.price).toLocaleString("es-AR")}
                   </p>
           
                   <div className="flex gap-2 mt-4">
