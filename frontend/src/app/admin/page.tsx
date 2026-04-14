@@ -75,7 +75,7 @@ export default function AdminPage() {
         if (editingId) {
           await updateProduct(editingId, {
             ...form,
-            price: Number(form.price), 
+            price: Number(form.price.replace(/\./g, "")), 
           });
     
           setProducts((prev: any) =>
@@ -92,7 +92,7 @@ export default function AdminPage() {
         } else {
           const res = await createProduct({
             ...form,
-            price: Number(form.price.replace(/\./g, "")),
+            price: Number(form.price),
           });
     
           setProducts((prev: any) => [...prev, res.data]);
@@ -142,7 +142,15 @@ export default function AdminPage() {
               className="border border-[#d6cfc4] p-2 mb-2 w-full text-[#5a4634] rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm md:text-base"
               placeholder="Precio"
               value={form.price}
-              onChange={(e) => setForm({ ...form, price: e.target.value })}
+              onChange={(e) => {
+                const value = e.target.value.replace(/\./g, ""); 
+                if (!isNaN(Number(value))) {
+                  setForm({
+                    ...form,
+                    price: Number(value).toLocaleString("es-AR"),
+                  });
+                }
+              }}
             />
           
             <input
@@ -163,15 +171,7 @@ export default function AdminPage() {
               className="border border-[#d6cfc4] p-2 mb-2 w-full text-[#5a4634] rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm md:text-base"
               placeholder="Categoría"
               value={form.category}
-              onChange={(e) => {
-                const value = e.target.value.replace(/\./g, "");
-                if (!isNaN(Number(value))) {
-                  setForm({
-                    ...form,
-                    price: Number(value).toLocaleString("es-AR"),
-                  });
-                }
-              }}
+              onChange={(e) => setForm({ ...form, category: e.target.value })}
             />
           
             <div className="flex flex-col md:flex-row gap-2 mt-4">
