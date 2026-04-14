@@ -1,7 +1,7 @@
 export default function Footer() {
     return (
         <footer className="bg-[#e8dfd3] text-[#5a4634] border-t border-[#d6c7b2]">
-          <div className="max-w-6xl mx-auto px-6 py-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="max-w-6xl mx-auto px-6 py-8 grid grid-cols-1 md:grid-cols-3 gap-8">
         
             <div>
               <h2 className="text-xl font-semibold tracking-wide">
@@ -12,31 +12,41 @@ export default function Footer() {
               </p>
             </div>
         
-            <div className="flex flex-col items-start justify-start text-left">
+            <div className="flex flex-col items-start justify-start">
               <h3 className="text-md font-semibold mb-2 border-b border-[#cbb89d] inline-block">
                 Contacto
               </h3>
         
               <p className="text-sm mt-2">Ituzaingó, Bs.As</p>
         
+              {/* WhatsApp */}
               <a
                 href="https://wa.me/541127493992"
-                className="text-sm block mt-3 self-start hover:text-[#8f5c30] transition"
+                className="text-sm flex flex-col items-start mt-4 group transition"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                clickea para contactarnos por WhatsApp
-                <img src="logo_whatsapp.png" alt="WhatsApp" className="w-24 h-auto hover:scale-110 transition" />
+                <span className="group-hover:text-[#8f5c30]">clickea para contactarnos por WhatsApp</span>
+                <img 
+                  src="logo_whatsapp.png" 
+                  alt="WhatsApp" 
+                  className="w-16 h-16 object-contain mt-2 group-hover:scale-110 transition-transform" 
+                />
               </a>
 
+              {/* Instagram */}
               <a
                 href="https://www.instagram.com/amorica.aromas/?hl=es"
-                className="text-sm block mt-3 self-start hover:text-[#8f5c30] transition"
+                className="text-sm flex flex-col items-start mt-4 group transition"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                clickea para seguirnos en Instagram
-                <img src="instagram.png" alt="Instagram" className="w-20 h-auto hover:scale-110 transition" />
+                <span className="group-hover:text-[#8f5c30]">clickea para seguirnos en Instagram</span>
+                <img 
+                  src="instagram.png" 
+                  alt="Instagram" 
+                  className="w-16 h-16 object-contain mt-2 group-hover:scale-110 transition-transform" 
+                />
               </a>
             </div>
         
@@ -45,14 +55,14 @@ export default function Footer() {
                 Información
               </h3>
         
-              <p className="text-sm mt-2">Envíos:</p>
+              <p className="text-sm mt-2 font-medium">Envíos:</p>
               <ul className="text-sm ml-2 text-[#7a5c3e]">
                 <li>• Correo</li>
                 <li>• Motomensajería</li>
                 <li>• Puntos de encuentro</li>
               </ul>
         
-              <p className="text-sm mt-3">Pagos:</p>
+              <p className="text-sm mt-3 font-medium">Pagos:</p>
               <p className="text-sm text-[#7a5c3e]">
                 Transferencia / Efectivo
               </p>
