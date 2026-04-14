@@ -118,4 +118,4 @@ export async function uploadImage(file: File) {
   if (!res.ok) throw new Error("Error al subir imagen");
 
   return res.json();
-}
+} 
