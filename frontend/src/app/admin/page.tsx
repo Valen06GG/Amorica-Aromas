@@ -61,12 +61,17 @@ export default function AdminPage() {
     };
 
     const handleEdit = (product: any) => {
-        setForm({
-            ...product,
-            price: Number(product.price.replace(/\./g, "")),
-        });
-
-        setEditingId(product.id)
+       setEditingId(product.id);
+  
+       const formattedPrice = Number(product.price).toLocaleString("es-AR");
+     
+       setForm({
+         name: product.name,
+         description: product.description,
+         price: formattedPrice,
+         image: product.image,
+         category: product.category,
+       });
     };
 
 
