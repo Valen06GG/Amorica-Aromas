@@ -51,6 +51,7 @@ export default function Home() {
       <option value="">Todas las categorías</option>
       <option value="Budas">Budas</option>
       <option value="Cascadas de humo">Cascadas de humo</option>
+      <option value="Difusores automaticos">Difusores automaticos</option>
       <option value="Elefantes hindú">Elefantes hindú</option>
       <option value="Lamparas de sal">Lamparas de sal</option>
       <option value="Porta sahumerios">Porta sahumerios</option>
@@ -58,6 +59,7 @@ export default function Home() {
       <option value="Sahumerios">Sahumerios</option>
       <option value="Sets">Sets</option>
       <option value="Velas de Soja">Velas de Soja</option>
+      <option value="Varios">Varios</option>
     </select>
 
     <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
