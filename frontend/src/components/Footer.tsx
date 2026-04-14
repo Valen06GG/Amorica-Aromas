@@ -26,11 +26,9 @@ export default function Footer() {
                 rel="noopener noreferrer"
               >
                 clickea para contactarnos por WhatsApp
-                {/* Contenedor idéntico para ambos iconos */}
                 <div className="grid place-items-start mt-2"> 
-                    {/* SVG o PNG transparente - Ejemplo usando PNG transparente */}
                     <img 
-                      src="/path/to/tu/logo_whatsapp_plano.svg" // O PNG transparente
+                      src="logo_whatsapp.png"
                       alt="WhatsApp" 
                       className="w-10 h-10 object-contain group-hover:scale-110 transition-transform duration-300"
                     />
@@ -46,7 +44,7 @@ export default function Footer() {
                 clickea para seguirnos en Instagram
                 <div className="grid place-items-start mt-2">
                     <img 
-                      src="/path/to/tu/logo_instagram_transparente.png"
+                      src="instagram.png"
                       alt="Instagram" 
                       className="w-10 h-10 object-contain group-hover:scale-110 transition-transform duration-300" 
                     />
