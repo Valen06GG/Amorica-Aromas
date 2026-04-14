@@ -28,6 +28,16 @@ export default function Footer() {
                 clickea para contactarnos por WhatsApp
                 <img src="logo_whatsapp.png" alt="WhatsApp" className="w-24 h-auto hover:scale-110 transition" />
               </a>
+
+              <a
+                href="https://www.instagram.com/amorica.aromas/?hl=es"
+                className="text-sm block mt-3 self-start hover:text-[#8f5c30] transition"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                clickea para seguirnos en Instagram
+                <img src="logo_instagram.png" alt="Instagram" className="w-24 h-auto hover:scale-110 transition" />
+              </a>
             </div>
         
             <div>
