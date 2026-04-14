@@ -36,7 +36,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
               >
                 clickea para seguirnos en Instagram
-                <img src="logo_instagram.png" alt="Instagram" className="w-24 h-auto hover:scale-110 transition" />
+                <img src="instagram.png" alt="Instagram" className="w-20 h-auto hover:scale-110 transition" />
               </a>
             </div>
         
