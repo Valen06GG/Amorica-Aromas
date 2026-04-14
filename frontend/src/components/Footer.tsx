@@ -16,35 +16,39 @@ export default function Footer() {
               <h3 className="text-md font-semibold mb-2 border-b border-[#cbb89d] inline-block">
                 Contacto
               </h3>
-        
+            
               <p className="text-sm mt-2">Ituzaingó, Bs.As</p>
-        
+            
               <a
                 href="https://wa.me/541127493992"
-                className="text-sm flex flex-col items-start mt-4 group transition"
+                className="text-sm flex flex-col items-start mt-6 group transition"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span className="group-hover:text-[#8f5c30]">clickea para contactarnos por WhatsApp</span>
-                <img 
-                  src="logo_whatsapp.png" 
-                  alt="WhatsApp" 
-                  className="w-14 h-14 object-contain mt-1 group-hover:scale-110 transition-transform" 
-                />
+                <span className="group-hover:text-[#8f5c30] mb-2">clickea para contactarnos por WhatsApp</span>
+                <div className="w-24 h-24 flex items-center justify-start"> 
+                  <img 
+                    src="logo_whatsapp.png" 
+                    alt="WhatsApp" 
+                    className="w-full h-full object-contain scale-150 origin-left group-hover:scale-[1.6] transition-transform" 
+                  />
+                </div>
               </a>
-
+            
               <a
                 href="https://www.instagram.com/amorica.aromas/?hl=es"
-                className="text-sm flex flex-col items-start mt-4 group transition"
+                className="text-sm flex flex-col items-start mt-6 group transition"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span className="group-hover:text-[#8f5c30]">clickea para seguirnos en Instagram</span>
-                <img 
-                  src="instagram.png" 
-                  alt="Instagram" 
-                  className="w-12 h-12 object-contain mt-2 group-hover:scale-110 transition-transform" 
-                />
+                <span className="group-hover:text-[#8f5c30] mb-2">clickea para seguirnos en Instagram</span>
+                <div className="w-20 h-20 flex items-center justify-start">
+                  <img 
+                    src="instagram.png" 
+                    alt="Instagram" 
+                    className="w-full h-full object-contain group-hover:scale-110 transition-transform" 
+                  />
+                </div>
               </a>
             </div>
         
