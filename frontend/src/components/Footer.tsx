@@ -57,7 +57,7 @@ export default function Footer() {
                 Información
               </h3>
 
-              <h3 className="text-md font-semibold mt-2 mb-1 border-b border-[#cbb89d] inline-block">
+              <h3 className="text-md font-semibold mt-2 mb-1 border-b border-[#cbb89d]">
                 MINORISTA
               </h3>
         
