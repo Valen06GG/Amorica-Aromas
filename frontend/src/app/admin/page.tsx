@@ -63,7 +63,7 @@ export default function AdminPage() {
     const handleEdit = (product: any) => {
         setForm({
             ...product,
-            price: Number(form.price.replace(/\./g, "")),
+            price: Number(product.price.replace(/\./g, "")),
         });
 
         setEditingId(product.id)
@@ -81,7 +81,11 @@ export default function AdminPage() {
           setProducts((prev: any) =>
             prev.map((p: any) =>
               p.id === editingId
-                ? { ...p, ...form, price: Number(form.price) }
+                ? { 
+                  ...p,
+                  ...form,
+                  price: Number(form.price.replace(/\./g, "")) 
+                }
                 : p
             )
           );
@@ -219,7 +223,7 @@ export default function AdminPage() {
                   <p className="text-sm text-gray-500">{product.category}</p>
           
                   <p className="mt-1 text-[#7a5c3e] font-bold text-base">
-                    ${Number(product.price).toLocaleString("es-AR")}
+                    ${product.price}
                   </p>
           
                   <div className="flex gap-2 mt-4">
