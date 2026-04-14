@@ -21,22 +21,36 @@ export default function Footer() {
         
               <a
                 href="https://wa.me/541127493992"
-                className="text-sm block mt-3 self-start hover:text-[#8f5c30] transition"
+                className="group text-sm block mt-3 self-start text-[#5a4634] hover:text-[#8f5c30] transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 clickea para contactarnos por WhatsApp
-                <img src="logo_whatsapp.png" alt="WhatsApp" className="w-24 h-auto hover:scale-110 transition" />
+                {/* Contenedor idéntico para ambos iconos */}
+                <div className="grid place-items-start mt-2"> 
+                    {/* SVG o PNG transparente - Ejemplo usando PNG transparente */}
+                    <img 
+                      src="/path/to/tu/logo_whatsapp_plano.svg" // O PNG transparente
+                      alt="WhatsApp" 
+                      className="w-10 h-10 object-contain group-hover:scale-110 transition-transform duration-300"
+                    />
+                </div>
               </a>
 
               <a
                 href="https://www.instagram.com/amorica.aromas/?hl=es"
-                className="text-sm block mt-3 self-start hover:text-[#8f5c30] transition"
+                className="group text-sm block mt-4 self-start text-[#5a4634] hover:text-[#8f5c30] transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 clickea para seguirnos en Instagram
-                <img src="instagram.png" alt="Instagram" className="w-20 h-auto hover:scale-110 transition" />
+                <div className="grid place-items-start mt-2">
+                    <img 
+                      src="/path/to/tu/logo_instagram_transparente.png"
+                      alt="Instagram" 
+                      className="w-10 h-10 object-contain group-hover:scale-110 transition-transform duration-300" 
+                    />
+                </div>
               </a>
             </div>
         
@@ -63,6 +77,7 @@ export default function Footer() {
           <div className="text-center text-xs text-[#7a5c3e] pb-6">
             © {new Date().getFullYear()} Amórica aromas
           </div>
+        
         </footer>
     )
 }
