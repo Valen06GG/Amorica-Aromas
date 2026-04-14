@@ -20,7 +20,7 @@ export function ProductCard({ product }: any) {
           </p>
       
           <p className="mt-1 text-[#7a5c3e] font-bold text-base">
-            ${Number(product.price).toLocaleString("es-AR", { style: "currency", currency: "ARS" })}
+            ${Number(product.price).toLocaleString("es-AR")}
           </p>
         </div>
       
