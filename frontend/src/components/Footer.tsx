@@ -26,11 +26,11 @@ export default function Footer() {
                 rel="noopener noreferrer"
               >
                 <span className="group-hover:text-[#8f5c30] mb-2">clickea para contactarnos por WhatsApp</span>
-                <div className="w-24 h-24 flex items-center justify-center overflow-hidden"> 
+                <div className="w-20 h-20 flex items-center justify-center overflow-hidden bg-transparent"> 
                   <img 
                     src="logo_whatsapp.png" 
                     alt="WhatsApp" 
-                    className="w-full h-full object-contain scale-[1.8] group-hover:scale-[2] transition-transform" 
+                    className="w-full h-full object-contain scale-[1.4] group-hover:scale-[1.5] transition-transform" 
                   />
                 </div>
               </a>
@@ -42,11 +42,11 @@ export default function Footer() {
                 rel="noopener noreferrer"
               >
                 <span className="group-hover:text-[#8f5c30] mb-2">clickea para seguirnos en Instagram</span>
-                <div className="w-24 h-24 flex items-center justify-center overflow-hidden">
+                <div className="w-20 h-16 flex items-center justify-center overflow-hidden bg-transparent">
                   <img 
                     src="instagram.png" 
                     alt="Instagram" 
-                    className="w-20 h-20 object-contain group-hover:scale-110 transition-transform" 
+                    className="w-full h-full object-contain scale-100 group-hover:scale-110 transition-transform" 
                   />
                 </div>
               </a>
