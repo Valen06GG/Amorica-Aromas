@@ -19,7 +19,6 @@ export default function Footer() {
         
               <p className="text-sm mt-2">Ituzaingó, Bs.As</p>
         
-              {/* WhatsApp */}
               <a
                 href="https://wa.me/541127493992"
                 className="text-sm flex flex-col items-start mt-4 group transition"
@@ -30,11 +29,10 @@ export default function Footer() {
                 <img 
                   src="logo_whatsapp.png" 
                   alt="WhatsApp" 
-                  className="w-16 h-16 object-contain mt-2 group-hover:scale-110 transition-transform" 
+                  className="w-14 h-14 object-contain mt-1 group-hover:scale-110 transition-transform" 
                 />
               </a>
 
-              {/* Instagram */}
               <a
                 href="https://www.instagram.com/amorica.aromas/?hl=es"
                 className="text-sm flex flex-col items-start mt-4 group transition"
@@ -45,7 +43,7 @@ export default function Footer() {
                 <img 
                   src="instagram.png" 
                   alt="Instagram" 
-                  className="w-16 h-16 object-contain mt-2 group-hover:scale-110 transition-transform" 
+                  className="w-12 h-12 object-contain mt-2 group-hover:scale-110 transition-transform" 
                 />
               </a>
             </div>
