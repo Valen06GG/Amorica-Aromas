@@ -92,7 +92,7 @@ export default function AdminPage() {
         } else {
           const res = await createProduct({
             ...form,
-            price: Number(form.price),
+            price: Number(form.price.replace(/\./g, "")),
           });
     
           setProducts((prev: any) => [...prev, res.data]);
