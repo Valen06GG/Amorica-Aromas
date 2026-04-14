@@ -1,5 +1,6 @@
 const API = process.env.NEXT_PUBLIC_API_URL;
 
+
 export async function getProducts(search?: string, category?: string) {
   let url = `${API}/products`;
 

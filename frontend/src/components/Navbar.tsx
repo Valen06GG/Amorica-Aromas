@@ -31,7 +31,7 @@ export default function Navbar() {
 
       toast.success("Cerraste sesión correctamente");
 
-      window.location.href = "/login";
+      window.location.href = "/loginadmin";
     } catch (error) {
       toast.error("Error al cerrar sesión");
     }
