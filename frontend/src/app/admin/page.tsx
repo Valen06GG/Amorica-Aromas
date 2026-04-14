@@ -133,22 +133,81 @@ export default function AdminPage() {
       <main className="min-h-screen bg-[#f5efe6] text-gray-900 px-4 py-6 md:px-10">
         <div className="bg-white border-[#d6cfc4] p-4 md:p-6 rounded-xl shadow-md w-full max-w-2xl mx-auto border">
           <h2 className="text-xl font-semibold mb-4 text-[#5a4634]">
-            {editingId ? "Editar producto" : "Crear producto"}
+            Crear / Editar producto
           </h2>
+        
+          <input
+            className="border border-[#d6cfc4] p-2 mb-2 w-full text-[#5a4634] rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm md:text-base"
+            placeholder="Nombre"
+            value={form.name}
+            onChange={(e) => setForm({ ...form, name: e.target.value })}
+          />
+        
+          <input
+            className="border border-[#d6cfc4] p-2 mb-2 w-full text-[#5a4634] rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm md:text-base"
+            placeholder="Descripción"
+            value={form.description}
+            onChange={(e) => setForm({ ...form, description: e.target.value })}
+          />
+        
+          <input
+            className="border border-[#d6cfc4] p-2 mb-2 w-full text-[#5a4634] rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm md:text-base"
+            placeholder="Precio"
+            value={form.price}
+            onChange={(e) => {
+              const value = e.target.value.replace(/\./g, ""); 
+              if (!isNaN(Number(value))) {
+                setForm({
+                  ...form,
+                  price: Number(value).toLocaleString("es-AR"),
+                });
+              }
+            }}
+          />
+        
+          <input
+              type="file"
+              accept="image/*"
+              onChange={handleImageUpload}
+              className="border border-[#d6cfc4] p-2 mb-2 w-full text-[#5a4634] rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm md:text-base"
+          />
+          
+          {form.image && (
+            <img
+              src={form.image}
+              className="w-full h-40 object-cover mt-2 rounded"
+              alt="Vista previa"
+            />
+          )}
+        
+          <input
+            className="border border-[#d6cfc4] p-2 mb-2 w-full text-[#5a4634] rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm md:text-base"
+            placeholder="Categoría"
+            value={form.category}
+            onChange={(e) => setForm({ ...form, category: e.target.value })}
+          />
+        
           <div className="flex flex-col md:flex-row gap-2 mt-4">
             <button
               onClick={handleCreate}
-              className="bg-[#b08968] text-white px-4 py-2 rounded transition cursor-pointer hover:bg-[#8e6d52]"
+              className="bg-[#b08968] text-white px-4 py-2 rounded transition cursor-pointer"
             >
               {editingId ? "Actualizar" : "Crear"}
             </button>
+        
             {editingId && (
               <button
                 onClick={() => {
                   setEditingId(null);
-                  setForm({ name: "", description: "", price: "", image: "", category: "" });
+                  setForm({
+                    name: "",
+                    description: "",
+                    price: "",
+                    image: "",
+                    category: "",
+                  });
                 }}
-                className="px-4 py-2 rounded bg-[#5a4634] text-white transition cursor-pointer"
+                className="border border-gray-400 px-4 py-2 rounded bg-[#5a4634] text-white transition cursor-pointer"
               >
                 Cancelar
               </button>
