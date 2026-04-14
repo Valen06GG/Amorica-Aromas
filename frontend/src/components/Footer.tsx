@@ -25,6 +25,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
+                clickea para contactarnos por WhatsApp
                 <img src="logo_whatsapp.png" alt="WhatsApp" className="w-24 h-auto hover:scale-110 transition" />
               </a>
             </div>
