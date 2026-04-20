@@ -11,7 +11,7 @@ export const typeOrmConfig: TypeOrmModuleOptions = {
   url: process.env.DATABASE_URL,
   entities: [__dirname + '/../**/*.entity{.ts,.js}'],
   migrations: ["dist/migrations/*{.js,.ts}"],
-  synchronize: false, 
+  synchronize: true, 
 };
 export default registerAs("typeorm", () => typeOrmConfig);
 
