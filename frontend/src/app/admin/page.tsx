@@ -152,7 +152,6 @@ export default function AdminPage() {
               className="border border-[#d6cfc4] p-2 mb-2 w-full text-[#5a4634] rounded text-sm md:text-base"
           />
           
-          {/* GALERÍA DE PREVIA */}
           <div className="grid grid-cols-4 gap-2 my-4">
             {form.images.map((imgUrl, index) => (
               <div key={index} className="relative group aspect-square">
@@ -190,12 +189,13 @@ export default function AdminPage() {
           </div>
         </div>
     
-        {/* LISTADO DE PRODUCTOS ABAJO */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-10">
           {products.map((product: any) => (
             <div key={product.id} className="bg-white rounded-xl shadow-sm overflow-hidden border border-[#eee6da] flex flex-col">
               <img
-                src={Array.isArray(product.images) ? product.images[0] : product.image}
+                src={product.images && Array.isArray(product.images) 
+                    ? product.images[0] 
+                    : (product.image || "/placeholder.jpg")}
                 alt={product.name}
                 className="w-full aspect-square object-cover"
               />

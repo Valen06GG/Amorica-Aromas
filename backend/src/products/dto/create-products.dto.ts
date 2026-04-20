@@ -13,8 +13,8 @@ export class CreateProductDto {
   @IsNumber()
   price!: number;
 
-  @IsArray({ message: 'images debe ser un arreglo' })
-  @IsString({ each: true, message: 'Cada imagen debe ser un texto (URL)' })
+  @IsArray()
+  @IsString({ each: true})
   @IsNotEmpty()
   images!: string[];
 
