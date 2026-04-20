@@ -4,14 +4,22 @@ import { createProduct, deleteProduct, getProducts, updateProduct, uploadImage }
 import { useEffect, useState } from "react"
 import toast from "react-hot-toast";
 
+interface ProductForm {
+    name: string;
+    description: string;
+    price: string;
+    images: string[];
+    category: string;
+}
+
 export default function AdminPage() {
     const [editingId, setEditingId] = useState<string | null>(null);
     const [products, setProducts] = useState<any[]>([]);
-    const [form, setForm] = useState({
+    const [form, setForm] = useState<ProductForm>({
         name: '',
         description: '',
         price: '',
-        image: '',
+        images: [],
         category: '',
     });
 
@@ -38,10 +46,11 @@ export default function AdminPage() {
       try {
         const res = await uploadImage(file);
     
-        setForm({
-          ...form,
-          image: res.url,
-        });
+        setForm(prevForm => ({
+          ...prevForm,
+          images: [...prevForm.images, res.url],
+        }));
+        toast.success("Imagen añadida");
     
       } catch {
         toast.error("Error al subir imagen");
@@ -69,7 +78,7 @@ export default function AdminPage() {
          name: product.name,
          description: product.description,
          price: formattedPrice,
-         image: product.image,
+         images: product.image,
          category: product.category,
        });
     };
@@ -125,7 +134,7 @@ export default function AdminPage() {
           name: "",
           description: "",
           price: "",
-          image: "",
+          images: [],
           category: "",
         });
     
@@ -177,14 +186,35 @@ export default function AdminPage() {
               className="border border-[#d6cfc4] p-2 mb-2 w-full text-[#5a4634] rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm md:text-base"
           />
           
-          {form.image && (
+          {form.images && (
             <img
-              src={form.image}
+              src={form.images[0]}
               className="w-full h-40 object-cover mt-2 rounded"
               alt="Vista previa"
             />
           )}
-        
+
+          <div className="grid grid-cols-3 gap-2 mt-2">
+            {form.images.map((imgUrl, index) => (
+              <div key={index} className="relative group">
+                <img
+                  src={imgUrl}
+                  className="w-full h-20 object-cover rounded border"
+                  alt={`Vista previa ${index}`}
+                />
+                <button
+                  onClick={() => {
+                    const newImages = form.images.filter((_, i) => i !== index);
+                    setForm({ ...form, images: newImages });
+                  }}
+                  className="absolute top-0 right-0 bg-red-500 text-white rounded-full w-5 h-5 text-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition"
+                >
+                  X
+                </button>
+              </div>
+            ))}
+          </div>
+                  
           <input
             className="border border-[#d6cfc4] p-2 mb-2 w-full text-[#5a4634] rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm md:text-base"
             placeholder="Categoría"
@@ -208,7 +238,7 @@ export default function AdminPage() {
                     name: "",
                     description: "",
                     price: "",
-                    image: "",
+                    images: [],
                     category: "",
                   });
                 }}

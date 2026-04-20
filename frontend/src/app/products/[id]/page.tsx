@@ -1,4 +1,7 @@
+'use client';
+
 import { getProductById } from "@/src/services/api";
+import { useState } from "react";
 
 interface Props {
   params: {
@@ -10,44 +13,39 @@ export default async function ProductDetail({ params }: Props) {
   const { id } = await params;
   const product = await getProductById(id);
 
+  const [mainImage, setMainImage] = useState(product.images[0]);
+
   return (
-    <main className="min-h-screen bg-[#f5efe6] px-4 py-10 md:px-16 flex justify-center items-start">
-      
-      <div className="max-w-3xl w-full bg-white rounded-2xl shadow-lg mt-10 overflow-hidden">
-        
+    <main className="...">
+      <div className="...">
         <div className="grid grid-cols-1 md:grid-cols-[3fr_2fr]">
-
-          <div className="overflow-hidden">
-            <img
-              src={product.image}
-              alt={product.name}
-              className="w-100 h-110 md:h-[400px] object-cover hover:scale-105 transition duration-500"
-            />
+          
+          <div>
+            <div className="overflow-hidden bg-gray-50">
+              <img
+                src={mainImage || product.images[0]} 
+                className="w-full h-[400px] object-contain transition duration-500"
+              />
+            </div>
+            
+            <div className="flex gap-2 p-4 overflow-x-auto">
+              {product.images?.map((img: string, idx: number) => (
+                <img
+                  key={idx}
+                  src={img}
+                  onClick={() => setMainImage(img)}
+                  className={`w-16 h-16 object-cover cursor-pointer rounded border-2 ${
+                    mainImage === img ? 'border-[#b08968]' : 'border-transparent'
+                  }`}
+                />
+              ))}
+            </div>
           </div>
 
-          <div className="flex flex-col justify-center p-8 md:p-12">
-
-            <span className="text-xs uppercase tracking-widest text-[#b08968] font-semibold mb-2">
-              {product.category}
-            </span>
-
-            <h1 className="text-2xl md:text-3xl font-bold text-[#5a4634] mb-3">
-              {product.name}
-            </h1>
-
-            <p className="text-gray-500 text-sm md:text-base leading-relaxed mb-6">
-              {product.description}
-            </p>
-
-            <p className="text-3xl font-bold text-[#7a5c3e]">
-              ${product.price}
-            </p>
+          <div className="p-8 md:p-12">
           </div>
-
         </div>
-
       </div>
-
     </main>
   );
 }

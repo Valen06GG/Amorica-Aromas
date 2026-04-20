@@ -3,23 +3,23 @@ import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 @Entity()
 export class Product {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  id!: string;
 
   @Column()
-  name: string;
+  name!: string;
 
   @Column()
-  description: string;
+  description!: string;
 
   @Column('decimal')
-  price: number;
+  price!: number;
+
+  @Column('simple-array')
+  images!: string[];
 
   @Column()
-  image: string;
-
-  @Column()
-  category: string;
+  category!: string;
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
-  createdAt: Date;
+  createdAt!: Date;
 }
