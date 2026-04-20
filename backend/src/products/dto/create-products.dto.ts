@@ -15,7 +15,6 @@ export class CreateProductDto {
 
   @IsArray()
   @IsString({ each: true})
-  @IsNotEmpty()
   images!: string[];
 
   @IsString()
