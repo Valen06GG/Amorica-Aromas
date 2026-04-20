@@ -1,5 +1,3 @@
-'use client';
-
 import { getProductById } from "@/src/services/api";
 import { useState } from "react";
 
