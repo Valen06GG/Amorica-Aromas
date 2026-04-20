@@ -85,16 +85,21 @@ export default function AdminPage() {
         const numericPrice = Number(form.price.replace(/\./g, ""));
         
         const payload = {
-            ...form,
+            name: form.name,
+            description: form.description,
             price: numericPrice,
+            images: form.images,
+            category: form.category,
         };
+
+        console.log("Enviando este payload:", payload);
 
         if (editingId) {
           await updateProduct(editingId, payload);
           toast.success("Producto actualizado ✅");
           setEditingId(null);
         } else {
-          const res = await createProduct(payload);
+          await createProduct(payload);
           toast.success("Producto creado ✅");
         }
     
