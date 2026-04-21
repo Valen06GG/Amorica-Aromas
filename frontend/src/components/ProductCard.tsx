@@ -1,7 +1,5 @@
 import Link from "next/link";
 
-
-
 export function ProductCard({ product }: any) {
 
   return (
@@ -14,7 +12,7 @@ export function ProductCard({ product }: any) {
 
           <img
 
-            src={product.image}
+            src={product.images}
 
             alt={product.name}
 
