@@ -1,9 +1,10 @@
 import Link from "next/link";
 
 export function ProductCard({ product }: any) {
-  const imageUrl = product.images && Array.isArray(product.images) && product.images.length > 0
-  ? product.images[0] 
-  : (product.images); 
+  const imageUrl =
+  product.images && product.images.length > 0
+    ? product.images[0]
+    : product.image || "/placeholder.jpg";
 
   return (
     <Link href={`/products/${product.id}`} className="group">
@@ -13,6 +14,9 @@ export function ProductCard({ product }: any) {
             src={imageUrl}
             alt={product.name}
             className="w-full h-full object-cover"
+            onError={(e) => {
+              (e.target as HTMLImageElement).src = "/placeholder.jpg";
+            }}
           />
         </div>
       
