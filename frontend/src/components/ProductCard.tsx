@@ -6,7 +6,7 @@ export function ProductCard({ product }: any) {
       <div className="bg-white rounded-2xl shadow-md overflow-hidden flex flex-col h-full transition-transform hover:scale-[1.02]">
         <div className="aspect-square w-full overflow-hidden bg-gray-100">
           <img
-            src={product.image}
+            src={product.images}
             alt={product.name}
             className="w-full h-full object-cover"
           />
@@ -28,4 +28,4 @@ export function ProductCard({ product }: any) {
       </div>
     </Link>
   );
-}
+} 
