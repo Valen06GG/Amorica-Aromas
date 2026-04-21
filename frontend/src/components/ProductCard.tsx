@@ -12,7 +12,7 @@ export function ProductCard({ product }: any) {
 
           <img
 
-            src={product.images}
+            src={product.image}
 
             alt={product.name}
 
