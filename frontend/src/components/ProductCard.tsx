@@ -1,22 +1,14 @@
 import Link from "next/link";
 
 export function ProductCard({ product }: any) {
-  const imageUrl =
-  product.images && product.images.length > 0
-    ? product.images[0]
-    : product.image || "/placeholder.jpg";
-
   return (
     <Link href={`/products/${product.id}`} className="group">
       <div className="bg-white rounded-2xl shadow-md overflow-hidden flex flex-col h-full transition-transform hover:scale-[1.02]">
         <div className="aspect-square w-full overflow-hidden bg-gray-100">
           <img
-            src={imageUrl}
+            src={product.image}
             alt={product.name}
             className="w-full h-full object-cover"
-            onError={(e) => {
-              (e.target as HTMLImageElement).src = "/placeholder.jpg";
-            }}
           />
         </div>
       
