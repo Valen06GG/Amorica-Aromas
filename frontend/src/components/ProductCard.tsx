@@ -2,8 +2,8 @@ import Link from "next/link";
 
 export function ProductCard({ product }: any) {
   const imageUrl = product.images && Array.isArray(product.images) && product.images.length > 0
-    ? product.images[0] 
-    : (product.image || "/placeholder.jpg");
+  ? product.images[0] 
+  : (product.images); 
 
   return (
     <Link href={`/products/${product.id}`} className="group">
