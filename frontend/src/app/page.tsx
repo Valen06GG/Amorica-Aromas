@@ -1,6 +1,5 @@
 'use client';
 
-import Image from "next/image";
 import { getProducts } from "../services/api";
 import { ProductCard } from "../components/ProductCard";
 import { useEffect, useState } from "react";

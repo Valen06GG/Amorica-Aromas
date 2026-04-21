@@ -14,8 +14,8 @@ export class Product {
   @Column('decimal')
   price!: number;
 
-  @Column('simple-array', { nullable: true })
-  images!: string[];
+  @Column()
+  image!: string;
 
   @Column()
   category!: string;
