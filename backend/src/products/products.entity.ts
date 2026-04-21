@@ -14,7 +14,9 @@ export class Product {
   @Column('decimal')
   price!: number;
 
-  @Column()
+  @Column({
+    nullable: true,
+  })
   image!: string;
 
   @Column()
