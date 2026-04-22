@@ -106,7 +106,7 @@ export default function AdminPage() {
 
     return (
     <main className="min-h-screen bg-[#f5efe6] text-gray-900 px-4 py-6 md:px-10">
-      <div className="bg-white border-[#d6cfc4] p-4 md:p-6 rounded-xl shadow-md w-full max-w-2xl mx-auto border">
+      <div ref={formRef} className="bg-white border-[#d6cfc4] p-4 md:p-6 rounded-xl shadow-md w-full max-w-2xl mx-auto border">
         <h2 className="text-xl font-semibold mb-4 text-[#5a4634]">Crear / Editar producto</h2>
 
         <input className="border border-[#d6cfc4] p-2 mb-2 w-full text-[#5a4634] rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm" placeholder="Nombre" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
