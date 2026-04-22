@@ -19,7 +19,7 @@ export class Product {
   })
   image!: string;
 
-  @Column({ type: 'text', array: true, default: [] })
+  @Column("text", { array: true, default: [] })
   images!: string[];
 
   @Column()
