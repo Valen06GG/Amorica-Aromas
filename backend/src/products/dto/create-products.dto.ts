@@ -16,6 +16,8 @@ export class CreateProductDto {
   @IsNotEmpty()
   image!: string;
 
+  images?: string[];
+
   @IsString()
   @IsNotEmpty()
   category!: string;
