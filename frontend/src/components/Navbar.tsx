@@ -57,7 +57,7 @@ export default function Navbar() {
         >
           <Home
             size={18}
-            className="mb-1 text-[#e8dfd3] group-hover:text-[#5a4634]"
+            className="mb-1 text-[#8f5c30]"
           />
           Inicio
           
