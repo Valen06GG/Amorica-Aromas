@@ -168,50 +168,24 @@ export class ProductsService {
 
     }
 
-
-
     async update(id: string, data: any) {
-
       const updateProduct = await this.productRepo.findOne({
-
         where: { id }
-
       });
-
-
-
       if (!updateProduct) {
-
         throw new HttpException('Producto no encontrado', HttpStatus.NOT_FOUND);
-
       }
-
-
-
       try {
-
-        await this.productRepo.update(id, data);
-
-
-
+        const updated = this.productRepo.merge(updateProduct, data);
+        await this.productRepo.save(updated);
         return {
-
           message: 'Producto actualizado correctamente',
-
         };
-
       } catch (error) {
-
         throw new HttpException(
-
           'Error al actualizar el producto',
-
           HttpStatus.BAD_REQUEST,
-
         );
-
       }
-
     }
-
 }
