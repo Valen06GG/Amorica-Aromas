@@ -57,9 +57,8 @@ export default function Navbar() {
         >
           <Home
             size={18}
-            className="mb-1 text-[#e8dfd3] group-hover:text-[#8f5c30]"
+            className="mb-1 text-[#e8dfd3] group-hover:text-[#5a4634]"
           />
-          
           Inicio
           
           <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-[#8f5c30] transition-all group-hover:w-full"></span>
