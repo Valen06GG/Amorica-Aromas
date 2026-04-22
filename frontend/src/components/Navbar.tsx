@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast/headless";
+import { Home } from "lucide-react";
 
 export default function Navbar() {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -52,9 +53,14 @@ export default function Navbar() {
 
         <Link 
           href="/" 
-          className="relative group"
+          className="relative group flex flex-col items-center text-[#5a4634]"
         >
+          <Home
+            size={18}
+            className="mb-1 text-[#e8dfd3] group-hover:text-[#8f5c30] transition"
+          />
           Inicio
+          
           <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-[#8f5c30] transition-all group-hover:w-full"></span>
         </Link>
 
