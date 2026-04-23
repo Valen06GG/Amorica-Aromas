@@ -16,7 +16,7 @@ export default function Home() {
   const fetchProducts = async () => {
     const data = await getProducts(search, category);
     setProducts(data);
-  };
+  }; 
 
   return (
   <main className="min-h-screen bg-[#f5efe6] px-4 py-6 md:px-10">
