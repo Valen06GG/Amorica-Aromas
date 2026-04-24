@@ -52,6 +52,8 @@ export default function Home() {
       <option value="Cascadas de humo">Cascadas de humo</option>
       <option value="Difusores automaticos">Difusores automaticos</option>
       <option value="Elefantes hindú">Elefantes hindú</option>
+      <option value="Ganesha">Ganesha</option>
+      <option value="Hornitos">Hornitos</option>
       <option value="Lamparas de sal">Lamparas de sal</option>
       <option value="Porta sahumerios">Porta sahumerios</option>
       <option value="Sahumadores">Sahumadores</option>

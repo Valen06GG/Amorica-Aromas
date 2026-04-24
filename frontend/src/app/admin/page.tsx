@@ -22,6 +22,8 @@ export default function AdminPage() {
       "Cascadas de humo",
       "Difusores automaticos",
       "Elefantes hindú",
+      "Ganesha",
+      "Hornitos",
       "Lamparas de sal",
       "Porta sahumerios",
       "Sahumadores",
