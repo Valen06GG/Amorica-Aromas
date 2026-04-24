@@ -17,6 +17,20 @@ export default function AdminPage() {
     });
     const formRef = useRef<HTMLDivElement>(null);
 
+    const categories = [
+      "Budas",
+      "Cascadas de humo",
+      "Difusores automaticos",
+      "Elefantes hindú",
+      "Lamparas de sal",
+      "Porta sahumerios",
+      "Sahumadores",
+      "Sahumerios",
+      "Sets",
+      "Velas de Soja",
+      "Varios"
+    ];
+
     const fetchProducts = async () => {
         const data = await getProducts();
         setProducts(data);
@@ -134,7 +148,16 @@ export default function AdminPage() {
           </div>
         )}
 
-        <input className="border border-[#d6cfc4] p-2 mb-2 w-full text-[#5a4634] rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm" placeholder="Categoría" value={form.category} onChange={(e) => setForm({ ...form, category: e.target.value })} />
+        <select
+          value={form.category}
+          onChange={(e) => setForm({ ...form, category: e.target.value })}
+          className="border border-[#d6cfc4] text-[#5a4634] bg-white p-2 mb-2 w-full rounded text-sm"
+        >
+          <option value="">Seleccionar categoría</option>
+          {categories.map((cat) => (
+            <option key={cat} value={cat}>{cat}</option>
+          ))}
+        </select>
 
         <div className="flex flex-col md:flex-row gap-2 mt-4">
           <button onClick={handleCreate} className="bg-[#b08968] text-white px-4 py-2 rounded transition cursor-pointer">
