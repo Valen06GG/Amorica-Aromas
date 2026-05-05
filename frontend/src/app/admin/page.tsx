@@ -14,6 +14,7 @@ export default function AdminPage() {
         price: '',
         image: '',
         category: '',
+        outOfStock: false,
     });
     const formRef = useRef<HTMLDivElement>(null);
 
@@ -90,6 +91,7 @@ export default function AdminPage() {
      price: formattedPrice,
      image: product.image,
      category: product.category,
+     outOfStock: product.outOfStock,
    });
 
    setTimeout(() => {
@@ -99,7 +101,7 @@ export default function AdminPage() {
 
     const handleCreate = async () => {
     try {
-      const cleanPrice = Number(form.price.replace(/\./g, ""));
+      const cleanPrice = form.outOfStock? 0 : Number(form.price.replace(/\./g, ""));
       const payload = { ...form, price: cleanPrice, images };
 
       if (editingId) {
@@ -113,7 +115,7 @@ export default function AdminPage() {
         toast.success("Producto creado ✅", { style: { background: "#e8dfd3", color: "#5a4634" } });
       }
 
-      setForm({ name: "", description: "", price: "", image: "", category: "" });
+      setForm({ name: "", description: "", price: "", image: "", category: "", outOfStock: false });
       setImages([]);
     } catch {
       toast.error("Error ❌");
@@ -133,6 +135,17 @@ export default function AdminPage() {
             if (!isNaN(Number(value))) setForm({ ...form, price: Number(value).toLocaleString("es-AR") });
           }}
         />
+        <label className="flex items-center gap-2 mt-2 text-[#5a4634] text-sm">
+          <input
+            type="checkbox"
+            checked={form.outOfStock}
+            onChange={(e) =>
+              setForm({ ...form, outOfStock: e.target.checked })
+            }
+            className="w-4 h-4"
+          />
+          Sin stock
+        </label>
 
         <input type="file" accept="image/*" multiple onChange={handleImageUpload}
           className="border border-[#d6cfc4] p-2 mb-2 w-full text-[#5a4634] rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm"
@@ -166,7 +179,7 @@ export default function AdminPage() {
             {editingId ? "Actualizar" : "Crear"}
           </button>
           {editingId && (
-            <button onClick={() => { setEditingId(null); setForm({ name: "", description: "", price: "", image: "", category: "" }); setImages([]); }}
+            <button onClick={() => { setEditingId(null); setForm({ name: "", description: "", price: "", image: "", category: "", outOfStock: false }); setImages([]); }}
               className="border border-gray-400 px-4 py-2 rounded bg-[#5a4634] text-white transition cursor-pointer">
               Cancelar
             </button>
@@ -183,7 +196,7 @@ export default function AdminPage() {
             <div className="p-3 flex flex-col flex-grow">
               <h3 className="text-sm md:text-base text-[#5a4634] font-semibold line-clamp-2 min-h-[2.5rem] leading-tight">{product.name}</h3>
               <p className="text-xs text-gray-500 mb-1">{product.category}</p>
-              <p className="text-[#7a5c3e] font-bold text-base md:text-lg">${Number(product.price).toLocaleString("es-AR")}</p>
+              <p className="text-[#7a5c3e] font-bold text-base md:text-lg">{product.outOfStock? "Sin stock": `$${Number(product.price).toLocaleString("es-AR")}`}</p>
               <div className="flex gap-2 mt-auto pt-4">
                 <button onClick={() => handleEdit(product)} className="flex-1 bg-[#b08968] text-white py-2 rounded-lg text-xs md:text-sm font-medium cursor-pointer hover:bg-[#8e6d52] transition">Editar</button>
                 <button onClick={() => handleDelete(product.id)} className="flex-1 bg-[#5a4634] text-white py-2 rounded-lg text-xs md:text-sm font-medium cursor-pointer hover:bg-[#3e3226] transition">Eliminar</button>
