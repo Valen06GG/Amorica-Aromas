@@ -11,8 +11,8 @@ export class Product {
   @Column()
   description!: string;
 
-  @Column('decimal')
-  price!: number;
+  @Column('decimal', { nullable: true })
+  price!: number | null;
 
   @Column({ default: false })
   outOfStock!: boolean;
