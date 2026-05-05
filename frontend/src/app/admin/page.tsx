@@ -102,7 +102,11 @@ export default function AdminPage() {
     const handleCreate = async () => {
     try {
       const cleanPrice = form.outOfStock ? undefined : Number(form.price.replace(/\./g, ""));
-      const payload = { ...form, ...(cleanPrice !== undefined && { price: cleanPrice }), images, outOfStock: form.outOfStock };
+      const payload: any = { name: form.name, description: form.description, category: form.category, image: form.image, images, outOfStock: form.outOfStock, };
+
+      if (!form.outOfStock) {
+        payload.price = Number(form.price.replace(/\./g, ""));
+      }
 
       if (editingId) {
         await updateProduct(editingId, payload);
