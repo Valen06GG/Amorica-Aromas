@@ -101,8 +101,8 @@ export default function AdminPage() {
 
     const handleCreate = async () => {
     try {
-      const cleanPrice = form.outOfStock? null : Number(form.price.replace(/\./g, ""));
-      const payload = { ...form,price: cleanPrice,images,outOfStock: form.outOfStock, };
+      const cleanPrice = form.outOfStock || !form.price ? null : Number(form.price.replace(/\./g, ""));
+      const payload = { ...form, price: cleanPrice, images, outOfStock: form.outOfStock };
 
       if (editingId) {
         await updateProduct(editingId, payload);
@@ -127,20 +127,35 @@ export default function AdminPage() {
       <div ref={formRef} className="bg-white border-[#d6cfc4] p-4 md:p-6 rounded-xl shadow-md w-full max-w-2xl mx-auto border">
         <h2 className="text-xl font-semibold mb-4 text-[#5a4634]">Crear / Editar producto</h2>
 
-        <input className="border border-[#d6cfc4] p-2 mb-2 w-full text-[#5a4634] rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm" placeholder="Nombre" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
-        <input className="border border-[#d6cfc4] p-2 mb-2 w-full text-[#5a4634] rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm" placeholder="Descripción" value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} />
-        <input className="border border-[#d6cfc4] p-2 mb-2 w-full text-[#5a4634] rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm" placeholder="Precio" value={form.price}
-          onChange={(e) => {
-            const value = e.target.value.replace(/\./g, "");
-            if (!isNaN(Number(value))) setForm({ ...form, price: Number(value).toLocaleString("es-AR") });
-          }}
-        />
+        <input 
+        className="border border-[#d6cfc4] p-2 mb-2 w-full text-[#5a4634] rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm" 
+        placeholder="Nombre" 
+        value={form.name} 
+        onChange={(e) => setForm({ ...form, name: e.target.value })} />
+
+        <input 
+        className="border border-[#d6cfc4] p-2 mb-2 w-full text-[#5a4634] rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm" 
+        placeholder="Descripción" 
+        value={form.description} 
+        onChange={(e) => setForm({ ...form, description: e.target.value })} />
+
+        <input 
+        className="border border-[#d6cfc4] p-2 mb-2 w-full text-[#5a4634] rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm" 
+        placeholder="Precio" 
+        value={form.price} 
+        disabled={form.outOfStock} 
+        onChange={(e) => {const value = e.target.value.replace(/\./g, "");if (!isNaN(Number(value))) setForm({ ...form, price: Number(value).toLocaleString("es-AR") });}}/>
+
         <label className="flex items-center gap-2 mt-2 text-[#5a4634] text-sm">
           <input
             type="checkbox"
             checked={form.outOfStock}
             onChange={(e) =>
-              setForm({ ...form, outOfStock: e.target.checked })
+              setForm({ 
+                ...form, 
+                outOfStock: e.target.checked,
+                price: e.target.checked ? "" : form.price,
+              })
             }
             className="w-4 h-4"
           />
