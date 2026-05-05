@@ -67,12 +67,6 @@ export default function Home() {
       {products.map((product: any) => (
         <div key={product.id} className="relative">
     
-          {product.outOfStock && (
-            <div className="absolute top-2 left-2 z-10 bg-red-600 text-white text-xs md:text-sm px-2 py-1 rounded-full shadow-md">
-              Sin stock
-            </div>
-          )}
-    
           <ProductCard product={product} />
     
         </div>

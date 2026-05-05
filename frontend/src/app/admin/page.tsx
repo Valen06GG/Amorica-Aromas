@@ -101,8 +101,8 @@ export default function AdminPage() {
 
     const handleCreate = async () => {
     try {
-      const cleanPrice = form.outOfStock || !form.price ? null : Number(form.price.replace(/\./g, ""));
-      const payload = { ...form, price: cleanPrice, images, outOfStock: form.outOfStock };
+      const cleanPrice = form.outOfStock ? undefined : Number(form.price.replace(/\./g, ""));
+      const payload = { ...form, ...(cleanPrice !== undefined && { price: cleanPrice }), images, outOfStock: form.outOfStock };
 
       if (editingId) {
         await updateProduct(editingId, payload);
@@ -211,7 +211,7 @@ export default function AdminPage() {
             <div className="p-3 flex flex-col flex-grow">
               <h3 className="text-sm md:text-base text-[#5a4634] font-semibold line-clamp-2 min-h-[2.5rem] leading-tight">{product.name}</h3>
               <p className="text-xs text-gray-500 mb-1">{product.category}</p>
-              <p className="text-[#7a5c3e] font-bold text-base md:text-lg">{product.outOfStock? "Sin stock": `$${Number(product.price).toLocaleString("es-AR")}`}</p>
+              <p className="text-[#7a5c3e] font-bold text-base md:text-lg">{product.outOfStock ? "Sin stock": `$${Number(product.price).toLocaleString("es-AR")}`}</p>
               <div className="flex gap-2 mt-auto pt-4">
                 <button onClick={() => handleEdit(product)} className="flex-1 bg-[#b08968] text-white py-2 rounded-lg text-xs md:text-sm font-medium cursor-pointer hover:bg-[#8e6d52] transition">Editar</button>
                 <button onClick={() => handleDelete(product.id)} className="flex-1 bg-[#5a4634] text-white py-2 rounded-lg text-xs md:text-sm font-medium cursor-pointer hover:bg-[#3e3226] transition">Eliminar</button>
