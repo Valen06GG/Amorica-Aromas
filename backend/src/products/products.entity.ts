@@ -14,17 +14,20 @@ export class Product {
   @Column('decimal')
   price!: number;
 
+  @Column({ default: false })
+  outOfStock!: boolean;
+  
   @Column({
     nullable: true,
   })
   image!: string;
-
+  
   @Column("text", { array: true, default: [] })
   images!: string[];
-
+  
   @Column()
   category!: string;
-
+  
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   createdAt!: Date;
 }

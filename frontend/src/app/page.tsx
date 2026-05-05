@@ -65,7 +65,17 @@ export default function Home() {
 
     <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
       {products.map((product: any) => (
-        <ProductCard key={product.id} product={product} />
+        <div key={product.id} className="relative">
+    
+          {product.outOfStock && (
+            <div className="absolute top-2 left-2 z-10 bg-red-600 text-white text-xs md:text-sm px-2 py-1 rounded-full shadow-md">
+              Sin stock
+            </div>
+          )}
+    
+          <ProductCard product={product} />
+    
+        </div>
       ))}
     </div>
     </main>
