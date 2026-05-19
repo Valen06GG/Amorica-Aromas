@@ -19,6 +19,7 @@ export default function LoadingProducts() {
 
       <p className="mt-6 text-[#5a4634] text-lg font-medium animate-pulse">
         Cargando productos...
+        Esto puede tardar unos segundos, por favor espere.
       </p>
     </div>
   );
