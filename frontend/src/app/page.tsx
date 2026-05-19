@@ -3,19 +3,28 @@
 import { getProducts } from "../services/api";
 import { ProductCard } from "../components/ProductCard";
 import { useEffect, useState } from "react";
+import LoadingProducts from "../components/LoadingProducts";
 
 export default function Home() {
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchProducts();
   }, [search, category]); 
 
   const fetchProducts = async () => {
-    const data = await getProducts(search, category);
-    setProducts(data);
+    try {
+      setLoading(true);
+      const data = await getProducts(search, category);
+      setProducts(data);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
   }; 
 
   return (
@@ -63,15 +72,15 @@ export default function Home() {
       <option value="Varios">Varios</option>
     </select>
 
-    <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
-      {products.map((product: any) => (
-        <div key={product.id} className="relative">
-    
-          <ProductCard product={product} />
-    
+    {loading ? (
+        <LoadingProducts />
+      ) : (
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
+          {products.map((product: any) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
         </div>
-      ))}
-    </div>
+      )}
     </main>
   );
 }
