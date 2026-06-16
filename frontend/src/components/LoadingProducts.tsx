@@ -10,7 +10,6 @@ export default function LoadingProducts() {
 
         <div className="absolute inset-0 rounded-full border-4 border-t-[#b08968] border-r-[#b08968] border-b-transparent border-l-transparent animate-spin"></div>
 
-        
       </div>
 
       <p className="mt-6 text-[#5a4634] text-lg font-medium animate-pulse">
